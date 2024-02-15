@@ -7,7 +7,7 @@ import StepsCmd from '@/components/Steps/StepsCmd.vue';
 import StepsRegistry from '@/components/Steps/StepsRegistry.vue';
 import StepsRefreshPolicy from '@/components/Steps/StepsRefreshPolicy.vue';
 import { Progress } from '@/components/ui/progress/index.js';
-import StepInstall from '@/components/Steps/StepInstall.vue';
+import StepInstall from '@/components/Steps/StepsInstall.vue';
 
 const guideStore = useGuideStore();
 
