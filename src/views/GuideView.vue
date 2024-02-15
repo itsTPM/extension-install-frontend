@@ -1,12 +1,12 @@
 <script setup>
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button/index.js';
+import { Progress } from '@/components/ui/progress/index.js';
 
 import { useGuideStore } from '@/stores/guide';
 import StepsCmd from '@/components/Steps/StepsCmd.vue';
 import StepsRegistry from '@/components/Steps/StepsRegistry.vue';
 import StepsRefreshPolicy from '@/components/Steps/StepsRefreshPolicy.vue';
-import { Progress } from '@/components/ui/progress/index.js';
 import StepInstall from '@/components/Steps/StepsInstall.vue';
 import StepsUnsupported from '@/components/Steps/StepsUnsupported.vue';
 
@@ -41,6 +41,11 @@ const browsersData = [
       { component: StepsRefreshPolicy },
       { component: StepInstall },
     ],
+  },
+  {
+    name: 'Opera',
+    displayName: 'Opera',
+    steps: [{ component: StepInstall }],
   },
 ];
 
