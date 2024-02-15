@@ -1,5 +1,4 @@
 <script setup>
-import { useGuideStore } from "@/stores/guide";
 import {
   Card,
   CardContent,
@@ -10,6 +9,8 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button/index.js";
 import { Badge } from "@/components/ui/badge/index.js";
+
+import { useGuideStore } from "@/stores/guide";
 
 const guideStore = useGuideStore();
 
@@ -34,21 +35,19 @@ const data = {
 <template>
   <Card class="w-[40rem] h-[40rem]">
     <CardHeader>
-      <CardTitle>Chrome для Windows</CardTitle>
+      <CardTitle>{{ data.displayName }}</CardTitle>
       <CardDescription>установка расширения</CardDescription>
     </CardHeader>
     <CardContent>
-      <p>
-        <template
-          v-for="(item, index) in data.steps[guideStore.currentStep]"
-          :key="index"
-        >
-          <component :is="item.component" v-if="typeof item === 'object'">
-            {{ item.slotContent }}
-          </component>
-          <span v-else>{{ item }}</span>
-        </template>
-      </p>
+      <template
+        v-for="(item, index) in data.steps[guideStore.currentStep]"
+        :key="index"
+      >
+        <component :is="item.component" v-if="typeof item === 'object'">
+          {{ item.slotContent }}
+        </component>
+        <span v-else>{{ item }}</span>
+      </template>
     </CardContent>
     <CardFooter>
       <Button
