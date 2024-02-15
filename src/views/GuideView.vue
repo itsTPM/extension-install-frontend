@@ -27,7 +27,7 @@ const currentBrowser = browsersData.findIndex((browser) => browser.name === guid
 </script>
 
 <template>
-  <Card class="anti flex h-[25rem] w-[40rem] flex-col">
+  <Card class="relative flex h-[26rem] w-[40rem] flex-col">
     <CardHeader class="flex flex-shrink flex-row">
       <div class="flex flex-grow flex-col gap-2">
         <CardTitle>{{ browsersData[currentBrowser].displayName }}</CardTitle>
@@ -40,7 +40,7 @@ const currentBrowser = browsersData.findIndex((browser) => browser.name === guid
     <CardContent class="flex-grow">
       <component :is="browsersData[currentBrowser].steps[guideStore.currentStep].component"></component>
     </CardContent>
-    <CardFooter class="relative flex flex-shrink gap-3">
+    <CardFooter class="flex flex-shrink gap-3">
       <Button
         :disabled="guideStore.currentStep === browsersData[currentBrowser].steps.length - 1"
         class="flex-grow"
