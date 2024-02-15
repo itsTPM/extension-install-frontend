@@ -79,3 +79,7 @@
     @apply dark flex h-full items-center justify-center bg-background p-5 text-foreground;
   }
 }
+
+[data-sonner-toast] [data-content] {
+  transform: translateZ(0);
+}
