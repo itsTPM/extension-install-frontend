@@ -5,30 +5,43 @@ import { Button } from '@/components/ui/button/index.js';
 import { useGuideStore } from '@/stores/guide';
 import StepsCmd from '@/components/Steps/StepsCmd.vue';
 import StepsRegistry from '@/components/Steps/StepsRegistry.vue';
+import StepsRefreshPolicy from '@/components/Steps/StepsRefreshPolicy.vue';
 
 const guideStore = useGuideStore();
 
-const data = {
-  name: 'chrome',
-  displayName: 'Chrome для Windows',
-  steps: [[{ component: StepsCmd }], [{ component: StepsRegistry }]],
-};
+const browsersData = [
+  {
+    name: 'Google Chrome',
+    displayName: 'Chrome для Windows',
+    steps: [{ component: StepsCmd }, { component: StepsRegistry }, { component: StepsRefreshPolicy }],
+  },
+  {
+    name: 'Microsoft Edge',
+    displayName: 'Edge для Windows',
+    steps: [{ component: StepsCmd }, { component: StepsRegistry }, { component: StepsRefreshPolicy }],
+  },
+];
+
+const currentBrowser = browsersData.findIndex((browser) => browser.name === guideStore.browser);
 </script>
 
 <template>
-  <Card class="flex h-[30rem] w-[40rem] flex-col">
-    <CardHeader class="flex-shrink">
-      <CardTitle>{{ data.displayName }}</CardTitle>
-      <CardDescription>установка расширения</CardDescription>
+  <Card class="flex h-[25rem] w-[40rem] flex-col">
+    <CardHeader class="flex flex-shrink flex-row">
+      <div class="flex flex-grow flex-col gap-2">
+        <CardTitle>{{ browsersData[currentBrowser].displayName }}</CardTitle>
+        <CardDescription>установка расширения</CardDescription>
+      </div>
+      <div class="flex flex-shrink">
+        <span class="select-none text-xl">Шаг {{ guideStore.currentStep + 1 }}</span>
+      </div>
     </CardHeader>
     <CardContent class="flex-grow">
-      <template v-for="(item, index) in data.steps[guideStore.currentStep]" :key="index">
-        <component :is="item.component"></component>
-      </template>
+      <component :is="browsersData[currentBrowser].steps[guideStore.currentStep].component"></component>
     </CardContent>
     <CardFooter class="flex flex-shrink gap-3">
       <Button
-        :disabled="guideStore.currentStep === data.steps.length - 1"
+        :disabled="guideStore.currentStep === browsersData[currentBrowser].steps.length - 1"
         class="flex-grow"
         variant="outline"
         @click="guideStore.goNextStep()">
