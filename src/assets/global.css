@@ -73,9 +73,9 @@
     @apply border-border;
   }
   html {
-    @apply w-dvw h-dvh;
+    @apply h-dvh w-dvw;
   }
   body {
-    @apply bg-background text-foreground flex items-center h-full justify-center dark p-5;
+    @apply dark flex h-full items-center justify-center bg-background p-5 text-foreground;
   }
 }
