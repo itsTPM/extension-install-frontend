@@ -1,7 +1,7 @@
 <script setup>
-import { computed } from "vue";
-import { ProgressIndicator, ProgressRoot } from "radix-vue";
-import { cn } from "@/lib/utils";
+import { computed } from 'vue';
+import { ProgressIndicator, ProgressRoot } from 'radix-vue';
+import { cn } from '@/lib/utils';
 
 const props = defineProps({
   modelValue: { type: [Number, null], required: false, default: 0 },
@@ -21,17 +21,10 @@ const delegatedProps = computed(() => {
 
 <template>
   <ProgressRoot
-    v-bind="delegatedProps"
-    :class="
-      cn(
-        'relative h-4 w-full overflow-hidden rounded-full bg-secondary',
-        props.class
-      )
-    "
-  >
+    :class="cn('relative h-4 w-full overflow-hidden rounded-full bg-secondary', props.class)"
+    v-bind="delegatedProps">
     <ProgressIndicator
-      class="h-full w-full flex-1 bg-primary transition-all"
-      :style="`transform: translateX(-${100 - (props.modelValue ?? 0)}%);`"
-    />
+      :style="`transform: translateX(-${100 - ((props.modelValue ?? 0) / props.max) * 100}%);`"
+      class="h-full w-full flex-1 bg-primary transition-all" />
   </ProgressRoot>
 </template>
