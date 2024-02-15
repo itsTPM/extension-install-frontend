@@ -8,10 +8,20 @@ import StepsRegistry from '@/components/Steps/StepsRegistry.vue';
 import StepsRefreshPolicy from '@/components/Steps/StepsRefreshPolicy.vue';
 import { Progress } from '@/components/ui/progress/index.js';
 import StepInstall from '@/components/Steps/StepsInstall.vue';
+import StepsUnsupported from '@/components/Steps/StepsUnsupported.vue';
 
 const guideStore = useGuideStore();
 
 const browsersData = [
+  {
+    name: 'Неподдерживаемый',
+    displayName: 'Неподдерживаемый',
+    steps: [
+      {
+        component: StepsUnsupported,
+      },
+    ],
+  },
   {
     name: 'Google Chrome',
     displayName: 'Chrome для Windows',
@@ -34,7 +44,11 @@ const browsersData = [
   },
 ];
 
-const currentBrowser = browsersData.findIndex((browser) => browser.name === guideStore.browser);
+let currentBrowser = browsersData.findIndex((browser) => browser.name === guideStore.browser);
+
+if (currentBrowser === -1) {
+  currentBrowser = 0;
+}
 </script>
 
 <template>
@@ -45,7 +59,9 @@ const currentBrowser = browsersData.findIndex((browser) => browser.name === guid
         <CardDescription>установка расширения</CardDescription>
       </div>
       <div class="flex flex-shrink">
-        <span class="select-none text-xl">Шаг {{ guideStore.currentStep + 1 }}</span>
+        <span v-if="browsersData[currentBrowser].steps.length > 1" class="select-none text-xl">
+          Шаг {{ guideStore.currentStep + 1 }}
+        </span>
       </div>
     </CardHeader>
     <CardContent class="flex-grow">
@@ -61,6 +77,7 @@ const currentBrowser = browsersData.findIndex((browser) => browser.name === guid
       </Button>
       <Button :disabled="guideStore.currentStep === 0" variant="outline" @click="guideStore.goPrevStep()">Назад</Button>
       <Progress
+        v-if="browsersData[currentBrowser].steps.length > 1"
         :max="browsersData[currentBrowser].steps.length - 1"
         :model-value="guideStore.currentStep"
         class="absolute bottom-0 right-0 h-1 rounded-t-lg" />
