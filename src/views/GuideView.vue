@@ -6,6 +6,7 @@ import { useGuideStore } from '@/stores/guide';
 import StepsCmd from '@/components/Steps/StepsCmd.vue';
 import StepsRegistry from '@/components/Steps/StepsRegistry.vue';
 import StepsRefreshPolicy from '@/components/Steps/StepsRefreshPolicy.vue';
+import { Progress } from '@/components/ui/progress/index.js';
 
 const guideStore = useGuideStore();
 
@@ -26,7 +27,7 @@ const currentBrowser = browsersData.findIndex((browser) => browser.name === guid
 </script>
 
 <template>
-  <Card class="flex h-[25rem] w-[40rem] flex-col">
+  <Card class="anti flex h-[25rem] w-[40rem] flex-col">
     <CardHeader class="flex flex-shrink flex-row">
       <div class="flex flex-grow flex-col gap-2">
         <CardTitle>{{ browsersData[currentBrowser].displayName }}</CardTitle>
@@ -39,7 +40,7 @@ const currentBrowser = browsersData.findIndex((browser) => browser.name === guid
     <CardContent class="flex-grow">
       <component :is="browsersData[currentBrowser].steps[guideStore.currentStep].component"></component>
     </CardContent>
-    <CardFooter class="flex flex-shrink gap-3">
+    <CardFooter class="relative flex flex-shrink gap-3">
       <Button
         :disabled="guideStore.currentStep === browsersData[currentBrowser].steps.length - 1"
         class="flex-grow"
@@ -48,6 +49,10 @@ const currentBrowser = browsersData.findIndex((browser) => browser.name === guid
         Далее
       </Button>
       <Button :disabled="guideStore.currentStep === 0" variant="outline" @click="guideStore.goPrevStep()">Назад</Button>
+      <Progress
+        :max="browsersData[currentBrowser].steps.length - 1"
+        :model-value="guideStore.currentStep"
+        class="absolute bottom-0 right-0 h-1 rounded-t-lg" />
     </CardFooter>
   </Card>
 </template>
