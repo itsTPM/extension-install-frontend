@@ -7,6 +7,7 @@ import StepsCmd from '@/components/Steps/StepsCmd.vue';
 import StepsRegistry from '@/components/Steps/StepsRegistry.vue';
 import StepsRefreshPolicy from '@/components/Steps/StepsRefreshPolicy.vue';
 import { Progress } from '@/components/ui/progress/index.js';
+import StepInstall from '@/components/Steps/StepInstall.vue';
 
 const guideStore = useGuideStore();
 
@@ -14,12 +15,22 @@ const browsersData = [
   {
     name: 'Google Chrome',
     displayName: 'Chrome для Windows',
-    steps: [{ component: StepsCmd }, { component: StepsRegistry }, { component: StepsRefreshPolicy }],
+    steps: [
+      { component: StepsCmd },
+      { component: StepsRegistry },
+      { component: StepsRefreshPolicy },
+      { component: StepInstall },
+    ],
   },
   {
     name: 'Microsoft Edge',
     displayName: 'Edge для Windows',
-    steps: [{ component: StepsCmd }, { component: StepsRegistry }, { component: StepsRefreshPolicy }],
+    steps: [
+      { component: StepsCmd },
+      { component: StepsRegistry },
+      { component: StepsRefreshPolicy },
+      { component: StepInstall },
+    ],
   },
 ];
 
