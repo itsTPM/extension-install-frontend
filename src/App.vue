@@ -1,16 +1,15 @@
 <script setup>
 import { onMounted } from 'vue';
-import BrowserDetector from 'browser-dtector';
 import { useGuideStore } from '@/stores/guide';
 import { toast, Toaster } from 'vue-sonner';
 
 const guideStore = useGuideStore();
 
 onMounted(() => {
-  const browser = new BrowserDetector(window.navigator.userAgent);
-  const browserName = browser.parseUserAgent().name;
+  // const browser = new BrowserDetector(window.navigator.userAgent);
+  // const browserName = browser.parseUserAgent().name;
 
-  guideStore.setBrowser(browserName);
+  // guideStore.setBrowser(browserName);
   guideStore.setUrlOrigin(window.location.origin);
 
   const promise = () => {
