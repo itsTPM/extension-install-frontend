@@ -2,87 +2,11 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button/index.js';
 import { Progress } from '@/components/ui/progress/index.js';
+import { browsersData } from '@/browsers.js';
 
 import { useGuideStore } from '@/stores/guide';
-import StepsCmd from '@/components/Steps/StepsCmd.vue';
-import StepsRegistry from '@/components/Steps/StepsRegistry.vue';
-import StepsRefreshPolicy from '@/components/Steps/StepsRefreshPolicy.vue';
-import StepInstall from '@/components/Steps/StepsInstall.vue';
-import StepsUnsupported from '@/components/Steps/StepsUnsupported.vue';
-import StepsEdgeDnD from '@/components/Steps/StepsEdgeDnD.vue';
-import StepsYandexDnD from '@/components/Steps/StepsYandexDnD.vue';
 
 const guideStore = useGuideStore();
-
-const browsersData = [
-  {
-    name: 'Неподдерживаемый',
-    displayName: 'Неподдерживаемый',
-    steps: [
-      {
-        component: StepsUnsupported,
-      },
-    ],
-  },
-  {
-    name: 'chrome',
-    displayName: 'Chrome для Windows',
-    steps: [
-      { component: StepsCmd },
-      { component: StepsRegistry },
-      { component: StepsRefreshPolicy },
-      {
-        component: StepInstall,
-        props: {
-          installMethod: 'oneClick',
-        },
-      },
-    ],
-  },
-  {
-    name: 'edge',
-    displayName: 'Edge для Windows',
-    steps: [
-      { component: StepsCmd },
-      { component: StepsRegistry },
-      { component: StepsRefreshPolicy },
-      {
-        component: StepInstall,
-        props: {
-          installMethod: 'dragAndDrop',
-        },
-      },
-      { component: StepsEdgeDnD },
-    ],
-  },
-  {
-    name: 'opera',
-    displayName: 'Opera',
-    steps: [
-      {
-        component: StepInstall,
-        props: {
-          installMethod: 'oneClick',
-        },
-      },
-    ],
-  },
-  {
-    name: 'yandex',
-    displayName: 'Яндекс Браузер',
-    steps: [
-      {
-        component: StepInstall,
-        props: {
-          installMethod: 'dragAndDrop',
-        },
-      },
-      {
-        component: StepsYandexDnD,
-      },
-    ],
-  },
-];
 
 let currentBrowser = browsersData.findIndex((browser) => browser.name === guideStore.browser);
 
