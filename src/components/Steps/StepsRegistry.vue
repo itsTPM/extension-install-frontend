@@ -6,11 +6,11 @@ const guideStore = useGuideStore();
 
 const data = [
   {
-    name: 'Google Chrome',
+    name: 'chrome',
     path: 'HKLM\\SOFTWARE\\Policies\\Google\\Chrome',
   },
   {
-    name: 'Microsoft Edge',
+    name: 'edge',
     path: 'HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge',
   },
 ];
