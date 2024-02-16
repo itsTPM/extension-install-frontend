@@ -26,13 +26,17 @@ onMounted(() => {
 
   guideStore.setUrlOrigin(window.location.origin);
 
-  const promise = () => {
+  const apiData = () => {
     return new Promise((resolve, reject) => {
       fetch('https://update.itstpm.tech/status')
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
-          resolve(data);
+          if (data.id && data.name && data.version) {
+            guideStore.setExtId(data.id);
+            resolve(data);
+          } else {
+            reject('Ошибка при загрузке данных!');
+          }
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -41,7 +45,7 @@ onMounted(() => {
     });
   };
 
-  toast.promise(promise(), {
+  toast.promise(apiData(), {
     loading: 'Загрузка данных с сервера...',
     success: 'Расширение готово к установке!',
     error: 'Ошибка при загрузке данных!',
