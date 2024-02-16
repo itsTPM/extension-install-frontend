@@ -34,6 +34,8 @@ onMounted(() => {
         .then((data) => {
           if (data.id && data.name && data.version) {
             guideStore.setExtId(data.id);
+            guideStore.setExtName(data.name);
+            guideStore.setExtVersion(data.version);
             resolve(data);
           } else {
             reject('Ошибка при загрузке данных!');

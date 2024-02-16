@@ -6,6 +6,8 @@ export const useGuideStore = defineStore('guide', {
       currentStep: 0,
       browser: '',
       extId: '',
+      extName: '',
+      extVersion: '',
       urlOrigin: '',
       isUnavailable: false,
       apiUrl: 'https://update.itstpm.tech',
@@ -20,6 +22,12 @@ export const useGuideStore = defineStore('guide', {
     },
     setExtId(id) {
       this.extId = id;
+    },
+    setExtVersion(version) {
+      this.extVersion = version;
+    },
+    setExtName(name) {
+      this.extName = name;
     },
     setBrowser(browser) {
       this.browser = browser;

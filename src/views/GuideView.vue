@@ -20,7 +20,10 @@ if (currentBrowser === -1) {
     <CardHeader class="flex flex-shrink flex-row">
       <div class="flex flex-grow flex-col gap-2">
         <CardTitle>{{ browsersData[currentBrowser].displayName }}</CardTitle>
-        <CardDescription>установка расширения</CardDescription>
+        <CardDescription v-if="guideStore.extName && guideStore.extVersion">
+          установка расширения {{ guideStore.extName }} версии {{ guideStore.extVersion }}
+        </CardDescription>
+        <CardDescription v-else>установка расширения</CardDescription>
       </div>
       <div class="flex flex-shrink">
         <span v-if="browsersData[currentBrowser].steps.length > 1" class="select-none text-xl">
