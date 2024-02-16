@@ -23,7 +23,7 @@ const browsersData = [
     ],
   },
   {
-    name: 'Google Chrome',
+    name: 'chrome',
     displayName: 'Chrome для Windows',
     steps: [
       { component: StepsCmd },
@@ -33,7 +33,7 @@ const browsersData = [
     ],
   },
   {
-    name: 'Microsoft Edge',
+    name: 'edge',
     displayName: 'Edge для Windows',
     steps: [
       { component: StepsCmd },
@@ -43,7 +43,7 @@ const browsersData = [
     ],
   },
   {
-    name: 'Opera',
+    name: 'opera',
     displayName: 'Opera',
     steps: [{ component: StepInstall }],
   },
