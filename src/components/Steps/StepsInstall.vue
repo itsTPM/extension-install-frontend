@@ -9,7 +9,7 @@ const guideStore = useGuideStore();
   <div class="flex flex-col gap-3">
     <span>Нажмите на кнопку и подтвердите установку во всплывающем окне</span>
     <a :href="`${guideStore.apiUrl}/extension.crx`" class="w-fit">
-      <Button class="w-fit" variant="outline">Установить расширение</Button>
+      <Button class="w-fit">Установить расширение</Button>
     </a>
   </div>
 </template>

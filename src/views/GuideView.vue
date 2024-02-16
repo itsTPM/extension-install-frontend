@@ -81,11 +81,10 @@ if (currentBrowser === -1) {
       <Button
         :disabled="guideStore.currentStep === browsersData[currentBrowser].steps.length - 1"
         class="flex-grow"
-        variant="outline"
         @click="guideStore.goNextStep()">
         Далее
       </Button>
-      <Button :disabled="guideStore.currentStep === 0" variant="outline" @click="guideStore.goPrevStep()">Назад</Button>
+      <Button :disabled="guideStore.currentStep === 0" @click="guideStore.goPrevStep()">Назад</Button>
       <Progress
         v-if="browsersData[currentBrowser].steps.length > 1"
         :max="browsersData[currentBrowser].steps.length - 1"
