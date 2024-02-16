@@ -2,6 +2,7 @@
 import { onMounted } from 'vue';
 import { useGuideStore } from '@/stores/guide';
 import { toast, Toaster } from 'vue-sonner';
+import ExtUnavailable from '@/components/ExtUnavailable.vue';
 
 const guideStore = useGuideStore();
 
@@ -36,6 +37,7 @@ onMounted(() => {
             resolve(data);
           } else {
             reject('Ошибка при загрузке данных!');
+            guideStore.toggleUnavailable();
           }
         })
         .catch((error) => {
@@ -55,5 +57,8 @@ onMounted(() => {
 
 <template>
   <Toaster position="top-right" theme="dark" />
+  <Transition mode="out-in" name="fade">
+    <ExtUnavailable v-if="guideStore.isUnavailable" />
+  </Transition>
   <RouterView />
 </template>

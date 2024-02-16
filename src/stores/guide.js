@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 export const useGuideStore = defineStore('guide', {
   state: () => {
-    return { currentStep: 0, browser: '', extId: '', urlOrigin: '' };
+    return { currentStep: 0, browser: '', extId: '', urlOrigin: '', isUnavailable: false };
   },
   actions: {
     goNextStep() {
@@ -19,6 +19,9 @@ export const useGuideStore = defineStore('guide', {
     },
     setUrlOrigin(url) {
       this.urlOrigin = url;
+    },
+    toggleUnavailable() {
+      this.isUnavailable = true;
     },
   },
 });
