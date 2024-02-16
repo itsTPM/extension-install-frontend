@@ -76,7 +76,10 @@
     @apply h-dvh w-dvw;
   }
   body {
-    @apply dark flex h-full items-center justify-center bg-background p-5 text-foreground;
+    @apply dark h-full bg-background p-5 text-foreground;
+  }
+  #app {
+    @apply flex h-full w-full items-center justify-center;
   }
 }
 

@@ -57,7 +57,7 @@ if (currentBrowser === -1) {
 </script>
 
 <template>
-  <Card class="relative flex h-[26rem] w-[40rem] flex-col">
+  <Card class="relative flex h-[26rem] w-full flex-col md:w-[40rem]">
     <CardHeader class="flex flex-shrink flex-row">
       <div class="flex flex-grow flex-col gap-2">
         <CardTitle>{{ browsersData[currentBrowser].displayName }}</CardTitle>
@@ -69,7 +69,7 @@ if (currentBrowser === -1) {
         </span>
       </div>
     </CardHeader>
-    <CardContent class="flex-grow">
+    <CardContent class="flex-grow overflow-auto">
       <component :is="browsersData[currentBrowser].steps[guideStore.currentStep].component"></component>
     </CardContent>
     <CardFooter class="flex flex-shrink gap-3">
