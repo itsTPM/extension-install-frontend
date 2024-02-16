@@ -47,6 +47,11 @@ const browsersData = [
     displayName: 'Opera',
     steps: [{ component: StepInstall }],
   },
+  {
+    name: 'yandex',
+    displayName: 'Яндекс Браузер',
+    steps: [{ component: StepInstall }],
+  },
 ];
 
 let currentBrowser = browsersData.findIndex((browser) => browser.name === guideStore.browser);
