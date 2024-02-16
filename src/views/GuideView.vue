@@ -9,6 +9,8 @@ import StepsRegistry from '@/components/Steps/StepsRegistry.vue';
 import StepsRefreshPolicy from '@/components/Steps/StepsRefreshPolicy.vue';
 import StepInstall from '@/components/Steps/StepsInstall.vue';
 import StepsUnsupported from '@/components/Steps/StepsUnsupported.vue';
+import StepsEdgeDnD from '@/components/Steps/StepsEdgeDnD.vue';
+import StepsYandexDnD from '@/components/Steps/StepsYandexDnD.vue';
 
 const guideStore = useGuideStore();
 
@@ -29,7 +31,12 @@ const browsersData = [
       { component: StepsCmd },
       { component: StepsRegistry },
       { component: StepsRefreshPolicy },
-      { component: StepInstall },
+      {
+        component: StepInstall,
+        props: {
+          installMethod: 'oneClick',
+        },
+      },
     ],
   },
   {
@@ -39,18 +46,41 @@ const browsersData = [
       { component: StepsCmd },
       { component: StepsRegistry },
       { component: StepsRefreshPolicy },
-      { component: StepInstall },
+      {
+        component: StepInstall,
+        props: {
+          installMethod: 'dragAndDrop',
+        },
+      },
+      { component: StepsEdgeDnD },
     ],
   },
   {
     name: 'opera',
     displayName: 'Opera',
-    steps: [{ component: StepInstall }],
+    steps: [
+      {
+        component: StepInstall,
+        props: {
+          installMethod: 'oneClick',
+        },
+      },
+    ],
   },
   {
     name: 'yandex',
     displayName: 'Яндекс Браузер',
-    steps: [{ component: StepInstall }],
+    steps: [
+      {
+        component: StepInstall,
+        props: {
+          installMethod: 'dragAndDrop',
+        },
+      },
+      {
+        component: StepsYandexDnD,
+      },
+    ],
   },
 ];
 
@@ -75,7 +105,9 @@ if (currentBrowser === -1) {
       </div>
     </CardHeader>
     <CardContent class="flex-grow overflow-auto">
-      <component :is="browsersData[currentBrowser].steps[guideStore.currentStep].component"></component>
+      <component
+        :is="browsersData[currentBrowser].steps[guideStore.currentStep].component"
+        v-bind="browsersData[currentBrowser].steps[guideStore.currentStep].props" />
     </CardContent>
     <CardFooter class="flex flex-shrink gap-3">
       <Button
