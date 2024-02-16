@@ -2,7 +2,14 @@ import { defineStore } from 'pinia';
 
 export const useGuideStore = defineStore('guide', {
   state: () => {
-    return { currentStep: 0, browser: '', extId: '', urlOrigin: '', isUnavailable: false };
+    return {
+      currentStep: 0,
+      browser: '',
+      extId: '',
+      urlOrigin: '',
+      isUnavailable: false,
+      apiUrl: 'https://update.itstpm.tech',
+    };
   },
   actions: {
     goNextStep() {

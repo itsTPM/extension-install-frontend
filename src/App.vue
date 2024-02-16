@@ -29,7 +29,7 @@ onMounted(() => {
 
   const apiData = () => {
     return new Promise((resolve, reject) => {
-      fetch('https://update.itstpm.tech/status')
+      fetch(`${guideStore.apiUrl}/status`)
         .then((response) => response.json())
         .then((data) => {
           if (data.id && data.name && data.version) {
