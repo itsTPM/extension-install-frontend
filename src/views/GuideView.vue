@@ -8,6 +8,7 @@ import { useGuideStore } from '@/stores/guide';
 import { onMounted } from 'vue';
 import { toast } from 'vue-sonner';
 import ExtUnavailable from '@/components/ExtUnavailable.vue';
+import { IconArrowLeft } from '@tabler/icons-vue';
 
 const guideStore = useGuideStore();
 
@@ -54,39 +55,47 @@ onMounted(() => {
   <Transition mode="out-in" name="fade">
     <ExtUnavailable v-if="guideStore.isUnavailable" />
   </Transition>
-  <Card class="relative flex h-[26rem] w-full flex-col md:w-[40rem]">
-    <CardHeader class="flex flex-shrink flex-row">
-      <div class="flex flex-grow flex-col gap-2">
-        <CardTitle>{{ browsersData[currentBrowser].displayName }}</CardTitle>
-        <CardDescription v-if="guideStore.extName && guideStore.extVersion">
-          установка расширения {{ guideStore.extName }} версии {{ guideStore.extVersion }}
-        </CardDescription>
-        <CardDescription v-else>установка расширения</CardDescription>
-      </div>
-      <div class="flex flex-shrink">
-        <span v-if="browsersData[currentBrowser].steps.length > 1" class="select-none text-xl">
-          Шаг {{ guideStore.currentStep + 1 }}
-        </span>
-      </div>
-    </CardHeader>
-    <CardContent class="flex-grow overflow-auto">
-      <component
-        :is="browsersData[currentBrowser].steps[guideStore.currentStep].component"
-        v-bind="browsersData[currentBrowser].steps[guideStore.currentStep].props" />
-    </CardContent>
-    <CardFooter class="flex flex-shrink gap-3">
-      <Button
-        :disabled="guideStore.currentStep === browsersData[currentBrowser].steps.length - 1"
-        class="flex-grow"
-        @click="guideStore.goNextStep()">
-        Далее
+  <div>
+    <RouterLink to="/">
+      <Button class="mb-2 flex gap-3" variant="link">
+        <IconArrowLeft />
+        На главную
       </Button>
-      <Button :disabled="guideStore.currentStep === 0" @click="guideStore.goPrevStep()">Назад</Button>
-      <Progress
-        v-if="browsersData[currentBrowser].steps.length > 1"
-        :max="browsersData[currentBrowser].steps.length - 1"
-        :model-value="guideStore.currentStep"
-        class="absolute bottom-0 right-0 h-1 rounded-t-lg" />
-    </CardFooter>
-  </Card>
+    </RouterLink>
+    <Card class="relative flex h-[26rem] w-full flex-col md:w-[40rem]">
+      <CardHeader class="flex flex-shrink flex-row">
+        <div class="flex flex-grow flex-col gap-2">
+          <CardTitle>{{ browsersData[currentBrowser].displayName }}</CardTitle>
+          <CardDescription v-if="guideStore.extName && guideStore.extVersion">
+            установка расширения {{ guideStore.extName }} версии {{ guideStore.extVersion }}
+          </CardDescription>
+          <CardDescription v-else>установка расширения</CardDescription>
+        </div>
+        <div class="flex flex-shrink">
+          <span v-if="browsersData[currentBrowser].steps.length > 1" class="select-none text-xl">
+            Шаг {{ guideStore.currentStep + 1 }}
+          </span>
+        </div>
+      </CardHeader>
+      <CardContent class="flex-grow overflow-auto">
+        <component
+          :is="browsersData[currentBrowser].steps[guideStore.currentStep].component"
+          v-bind="browsersData[currentBrowser].steps[guideStore.currentStep].props" />
+      </CardContent>
+      <CardFooter class="flex flex-shrink gap-3">
+        <Button
+          :disabled="guideStore.currentStep === browsersData[currentBrowser].steps.length - 1"
+          class="flex-grow"
+          @click="guideStore.goNextStep()">
+          Далее
+        </Button>
+        <Button :disabled="guideStore.currentStep === 0" @click="guideStore.goPrevStep()">Назад</Button>
+        <Progress
+          v-if="browsersData[currentBrowser].steps.length > 1"
+          :max="browsersData[currentBrowser].steps.length - 1"
+          :model-value="guideStore.currentStep"
+          class="absolute bottom-0 right-0 h-1 rounded-t-lg" />
+      </CardFooter>
+    </Card>
+  </div>
 </template>
