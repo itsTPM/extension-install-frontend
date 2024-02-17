@@ -2,7 +2,6 @@
 import { onMounted } from 'vue';
 import { useGuideStore } from '@/stores/guide';
 import { Toaster } from 'vue-sonner';
-import ExtUnavailable from '@/components/ExtUnavailable.vue';
 
 const guideStore = useGuideStore();
 
@@ -31,8 +30,6 @@ onMounted(() => {
 
 <template>
   <Toaster position="top-right" theme="dark" />
-  <Transition mode="out-in" name="fade">
-    <ExtUnavailable v-if="guideStore.isUnavailable" />
-  </Transition>
+
   <RouterView />
 </template>

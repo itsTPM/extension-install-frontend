@@ -7,6 +7,7 @@ import { browsersData } from '@/browsers.js';
 import { useGuideStore } from '@/stores/guide';
 import { onMounted } from 'vue';
 import { toast } from 'vue-sonner';
+import ExtUnavailable from '@/components/ExtUnavailable.vue';
 
 const guideStore = useGuideStore();
 
@@ -50,6 +51,9 @@ onMounted(() => {
 </script>
 
 <template>
+  <Transition mode="out-in" name="fade">
+    <ExtUnavailable v-if="guideStore.isUnavailable" />
+  </Transition>
   <Card class="relative flex h-[26rem] w-full flex-col md:w-[40rem]">
     <CardHeader class="flex flex-shrink flex-row">
       <div class="flex flex-grow flex-col gap-2">
