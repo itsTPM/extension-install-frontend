@@ -1,13 +1,10 @@
 <script setup>
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card/index.js';
 import { useGuideStore } from '@/stores/guide.js';
-import { browsersData } from '@/browsers.js';
 import { Button } from '@/components/ui/button/index.js';
 import { IconBrandGithub, IconDownload } from '@tabler/icons-vue';
 
 const guideStore = useGuideStore();
-
-const currentBrowser = browsersData.find((browser) => browser.name === guideStore.browser) || browsersData[0];
 </script>
 
 <template>
