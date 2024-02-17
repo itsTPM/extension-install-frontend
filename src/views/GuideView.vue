@@ -27,14 +27,16 @@ onMounted(() => {
             guideStore.setExtName(data.name);
             guideStore.setExtVersion(data.version);
             resolve(data);
+            guideStore.setAvailable();
           } else {
             reject('Ошибка при загрузке данных!');
-            guideStore.toggleUnavailable();
+            guideStore.setUnavailable();
           }
         })
         .catch((error) => {
           console.error('Error:', error);
           reject(error);
+          guideStore.setUnavailable();
         });
     });
   };

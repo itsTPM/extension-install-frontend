@@ -10,7 +10,7 @@ export const useGuideStore = defineStore('guide', {
       extVersion: '',
       urlOrigin: '',
       isUnavailable: false,
-      apiUrl: 'https://update.itstpm.tech',
+      apiUrl: 'https://devupdate.itstpm.tech',
     };
   },
   actions: {
@@ -35,8 +35,11 @@ export const useGuideStore = defineStore('guide', {
     setUrlOrigin(url) {
       this.urlOrigin = url;
     },
-    toggleUnavailable() {
+    setUnavailable() {
       this.isUnavailable = true;
+    },
+    setAvailable() {
+      this.isUnavailable = false;
     },
   },
 });
