@@ -23,7 +23,7 @@ const guideStore = useGuideStore();
           <IconDownload size="32" strokeWidth="1.5" />
         </Button>
       </RouterLink>
-      <a href="https://github.com/itsTPM/foxford-tools">
+      <a href="https://github.com/itsTPM/foxford-tools" target="_blank">
         <Button class="flex h-fit w-full justify-between py-[0.825rem]">
           <span class="text-xl font-normal">GitHub</span>
           <IconBrandGithub size="32" strokeWidth="1.5" />
