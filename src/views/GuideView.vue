@@ -5,6 +5,8 @@ import { Progress } from '@/components/ui/progress/index.js';
 import { browsersData } from '@/browsers.js';
 
 import { useGuideStore } from '@/stores/guide';
+import { onMounted } from 'vue';
+import { toast } from 'vue-sonner';
 
 const guideStore = useGuideStore();
 
@@ -13,6 +15,36 @@ let currentBrowser = browsersData.findIndex((browser) => browser.name === guideS
 if (currentBrowser === -1) {
   currentBrowser = 0;
 }
+
+onMounted(() => {
+  const apiData = () => {
+    return new Promise((resolve, reject) => {
+      fetch(`${guideStore.apiUrl}/status`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.id && data.name && data.version) {
+            guideStore.setExtId(data.id);
+            guideStore.setExtName(data.name);
+            guideStore.setExtVersion(data.version);
+            resolve(data);
+          } else {
+            reject('Ошибка при загрузке данных!');
+            guideStore.toggleUnavailable();
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          reject(error);
+        });
+    });
+  };
+
+  toast.promise(apiData(), {
+    loading: 'Загрузка данных с сервера...',
+    success: 'Расширение готово к установке!',
+    error: 'Ошибка при загрузке данных!',
+  });
+});
 </script>
 
 <template>

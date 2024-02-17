@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useGuideStore } from '@/stores/guide';
-import { toast, Toaster } from 'vue-sonner';
+import { Toaster } from 'vue-sonner';
 import ExtUnavailable from '@/components/ExtUnavailable.vue';
 
 const guideStore = useGuideStore();
@@ -26,34 +26,6 @@ onMounted(() => {
   }
 
   guideStore.setUrlOrigin(window.location.origin);
-
-  const apiData = () => {
-    return new Promise((resolve, reject) => {
-      fetch(`${guideStore.apiUrl}/status`)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.id && data.name && data.version) {
-            guideStore.setExtId(data.id);
-            guideStore.setExtName(data.name);
-            guideStore.setExtVersion(data.version);
-            resolve(data);
-          } else {
-            reject('Ошибка при загрузке данных!');
-            guideStore.toggleUnavailable();
-          }
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          reject(error);
-        });
-    });
-  };
-
-  toast.promise(apiData(), {
-    loading: 'Загрузка данных с сервера...',
-    success: 'Расширение готово к установке!',
-    error: 'Ошибка при загрузке данных!',
-  });
 });
 </script>
 
