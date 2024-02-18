@@ -10,7 +10,7 @@ const guideStore = useGuideStore();
 <template>
   <Card class="relative flex h-fit flex-col gap-6 p-10">
     <CardHeader class="flex-shrink flex-col items-center gap-6 p-0">
-      <img alt="" class="max-w-48" src="../../public/logo.svg" />
+      <img alt="" class="max-w-48" src="/logo.svg" />
       <div class="text-center">
         <CardTitle class="text-3xl font-normal">Foxford Tools</CardTitle>
         <CardDescription>кастомизация сайта Фокса</CardDescription>
