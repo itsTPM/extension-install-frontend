@@ -55,7 +55,7 @@ onMounted(() => {
   <Transition mode="out-in" name="fade">
     <ExtUnavailable v-if="guideStore.isUnavailable" />
   </Transition>
-  <div>
+  <div class="max-w-full">
     <RouterLink to="/">
       <Button class="mb-2 flex gap-3" variant="link">
         <IconArrowLeft />
