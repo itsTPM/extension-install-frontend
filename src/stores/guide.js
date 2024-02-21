@@ -10,7 +10,7 @@ export const useGuideStore = defineStore('guide', {
       extVersion: '',
       urlOrigin: '',
       isUnavailable: false,
-      apiUrl: 'https://devupdate.itstpm.tech',
+      apiUrl: import.meta.env.VITE_APP_API_URL,
     };
   },
   actions: {
