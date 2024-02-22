@@ -12,15 +12,17 @@ onMounted(() => {
     opera: /opr/.test(userAgent) || /opera/.test(userAgent),
     edge: /edg/.test(userAgent) || /edge/.test(userAgent),
     yandex: /yabrowser/.test(userAgent),
-    firefox: /firefox/.test(userAgent),
+    // firefox: /firefox/.test(userAgent),
     chrome: /chrome/.test(userAgent),
-    safari: /safari/.test(userAgent) && /mac os x/.test(userAgent),
+    // safari: /safari/.test(userAgent) && /mac os x/.test(userAgent),
   };
 
   for (const key in browsers) {
     if (browsers[key]) {
       guideStore.setBrowser(key);
       break;
+    } else {
+      guideStore.setBrowser('Неподдерживаемый');
     }
   }
 
