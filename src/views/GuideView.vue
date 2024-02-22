@@ -1,18 +1,19 @@
 <script setup>
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button/index.js';
 import { Progress } from '@/components/ui/progress/index.js';
 import { browsersData } from '@/browsers.js';
 
 import { useGuideStore } from '@/stores/guide';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { toast } from 'vue-sonner';
 import ExtUnavailable from '@/components/ExtUnavailable.vue';
 import { IconArrowLeft } from '@tabler/icons-vue';
 
 const guideStore = useGuideStore();
 
-let currentBrowser = browsersData.findIndex((browser) => browser.name === guideStore.browser);
+let currentBrowser = ref(browsersData.findIndex((browser) => browser.name === guideStore.browser));
 
 if (currentBrowser === -1) {
   currentBrowser = 0;
@@ -72,9 +73,28 @@ onMounted(() => {
           <CardDescription v-else>установка расширения</CardDescription>
         </div>
         <div class="flex flex-shrink">
-          <span v-if="browsersData[currentBrowser].steps.length > 1" class="select-none text-xl">
-            Шаг {{ guideStore.currentStep + 1 }}
-          </span>
+          <Select>
+            <SelectTrigger class="w-[180px] select-none focus:ring-0 focus:ring-offset-0">
+              <SelectValue :placeholder="browsersData[currentBrowser].displayName" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem
+                  v-for="(browser, index) in browsersData.filter((browser) => browser.name !== 'Неподдерживаемый')"
+                  :key="index"
+                  :disabled="browser.name === guideStore.browser"
+                  :textValue="browser.displayName"
+                  :value="browser.name"
+                  @click="
+                    guideStore.setStep(0);
+                    currentBrowser = index + 1;
+                    guideStore.setBrowser(browser.name);
+                  ">
+                  {{ browser.displayName }}
+                </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
       </CardHeader>
       <CardContent class="flex-grow overflow-auto">
@@ -86,10 +106,12 @@ onMounted(() => {
         <Button
           :disabled="guideStore.currentStep === browsersData[currentBrowser].steps.length - 1"
           class="flex-grow"
-          @click="guideStore.goNextStep()">
+          @click="guideStore.setStep((guideStore.currentStep += 1))">
           Далее
         </Button>
-        <Button :disabled="guideStore.currentStep === 0" @click="guideStore.goPrevStep()">Назад</Button>
+        <Button :disabled="guideStore.currentStep === 0" @click="guideStore.setStep((guideStore.currentStep -= 1))">
+          Назад
+        </Button>
         <Progress
           v-if="browsersData[currentBrowser].steps.length > 1"
           :max="browsersData[currentBrowser].steps.length - 1"

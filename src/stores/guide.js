@@ -14,11 +14,8 @@ export const useGuideStore = defineStore('guide', {
     };
   },
   actions: {
-    goNextStep() {
-      this.currentStep++;
-    },
-    goPrevStep() {
-      this.currentStep--;
+    setStep(step) {
+      this.currentStep = step;
     },
     setExtId(id) {
       this.extId = id;
