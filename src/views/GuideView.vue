@@ -6,20 +6,16 @@ import { Progress } from '@/components/ui/progress/index.js';
 import { browsersData } from '@/browsers.js';
 
 import { useGuideStore } from '@/stores/guide';
-import { onMounted, ref } from 'vue';
+import { computed, onMounted } from 'vue';
 import { toast } from 'vue-sonner';
 import ExtUnavailable from '@/components/ExtUnavailable.vue';
 import { IconArrowLeft } from '@tabler/icons-vue';
 
 const guideStore = useGuideStore();
 
-let currentBrowser = ref(browsersData.findIndex((browser) => browser.name === guideStore.browser));
+let currentBrowser = computed(() => browsersData.find((browser) => browser.name === guideStore.browser));
 
-if (currentBrowser === -1) {
-  currentBrowser = 0;
-}
-
-onMounted(() => {
+function getServerStatus() {
   const apiData = () => {
     return new Promise((resolve, reject) => {
       fetch(`${guideStore.apiUrl}/status`)
@@ -49,6 +45,15 @@ onMounted(() => {
     success: 'Расширение готово к установке!',
     error: 'Ошибка при загрузке данных!',
   });
+}
+
+function changeBrowser(browser, index) {
+  guideStore.setStep(0);
+  guideStore.setBrowser(browser.name);
+}
+
+onMounted(() => {
+  getServerStatus();
 });
 </script>
 
@@ -56,6 +61,7 @@ onMounted(() => {
   <Transition mode="out-in" name="fade">
     <ExtUnavailable v-if="guideStore.isUnavailable" />
   </Transition>
+
   <div class="max-w-full">
     <RouterLink class="inline-block" to="/">
       <Button class="mb-2 flex gap-3" variant="link">
@@ -63,20 +69,25 @@ onMounted(() => {
         На главную
       </Button>
     </RouterLink>
+
     <Card class="relative flex h-[26rem] w-full flex-col md:w-[40rem]">
       <CardHeader class="flex flex-shrink flex-row">
         <div class="flex flex-grow flex-col gap-2">
-          <CardTitle>{{ browsersData[currentBrowser].displayName }}</CardTitle>
+          <CardTitle>{{ currentBrowser.displayName }}</CardTitle>
+
           <CardDescription v-if="guideStore.extName && guideStore.extVersion">
             установка расширения {{ guideStore.extName }} версии {{ guideStore.extVersion }}
           </CardDescription>
+
           <CardDescription v-else>установка расширения</CardDescription>
         </div>
+
         <div class="flex flex-shrink">
           <Select>
             <SelectTrigger class="w-[180px] select-none focus:ring-0 focus:ring-offset-0">
-              <SelectValue :placeholder="browsersData[currentBrowser].displayName" />
+              <SelectValue :placeholder="currentBrowser.displayName" />
             </SelectTrigger>
+
             <SelectContent>
               <SelectGroup>
                 <SelectItem
@@ -85,11 +96,7 @@ onMounted(() => {
                   :disabled="browser.name === guideStore.browser"
                   :textValue="browser.displayName"
                   :value="browser.name"
-                  @click="
-                    guideStore.setStep(0);
-                    currentBrowser = index + 1;
-                    guideStore.setBrowser(browser.name);
-                  ">
+                  @click="changeBrowser(browser, index)">
                   {{ browser.displayName }}
                 </SelectItem>
               </SelectGroup>
@@ -97,24 +104,28 @@ onMounted(() => {
           </Select>
         </div>
       </CardHeader>
+
       <CardContent class="flex-grow overflow-auto">
         <component
-          :is="browsersData[currentBrowser].steps[guideStore.currentStep].component"
-          v-bind="browsersData[currentBrowser].steps[guideStore.currentStep].props" />
+          :is="currentBrowser.steps[guideStore.currentStep].component"
+          v-bind="currentBrowser.steps[guideStore.currentStep].props" />
       </CardContent>
+
       <CardFooter class="flex flex-shrink gap-3">
         <Button
-          :disabled="guideStore.currentStep === browsersData[currentBrowser].steps.length - 1"
+          :disabled="guideStore.currentStep === currentBrowser.steps.length - 1"
           class="flex-grow"
           @click="guideStore.setStep((guideStore.currentStep += 1))">
           Далее
         </Button>
+
         <Button :disabled="guideStore.currentStep === 0" @click="guideStore.setStep((guideStore.currentStep -= 1))">
           Назад
         </Button>
+
         <Progress
-          v-if="browsersData[currentBrowser].steps.length > 1"
-          :max="browsersData[currentBrowser].steps.length - 1"
+          v-if="currentBrowser.steps.length > 1"
+          :max="currentBrowser.steps.length - 1"
           :model-value="guideStore.currentStep"
           class="absolute bottom-0 right-0 h-1 rounded-t-lg" />
       </CardFooter>
