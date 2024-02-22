@@ -47,7 +47,7 @@ function getServerStatus() {
   });
 }
 
-function changeBrowser(browser, index) {
+function changeBrowser(browser) {
   guideStore.setStep(0);
   guideStore.setBrowser(browser.name);
 }
@@ -71,7 +71,7 @@ onMounted(() => {
     </RouterLink>
 
     <Card class="relative flex h-[26rem] w-full flex-col md:w-[40rem]">
-      <CardHeader class="flex flex-shrink flex-row">
+      <CardHeader class="flex flex-shrink flex-col gap-3 md:flex-row">
         <div class="flex flex-grow flex-col gap-2">
           <CardTitle>{{ currentBrowser.displayName }}</CardTitle>
 
@@ -84,7 +84,7 @@ onMounted(() => {
 
         <div class="flex flex-shrink">
           <Select>
-            <SelectTrigger class="w-[180px] select-none focus:ring-0 focus:ring-offset-0">
+            <SelectTrigger class="select-none focus:ring-0 focus:ring-offset-0">
               <SelectValue :placeholder="currentBrowser.displayName" />
             </SelectTrigger>
 
