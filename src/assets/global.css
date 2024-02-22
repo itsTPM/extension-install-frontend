@@ -81,30 +81,31 @@
   #app {
     @apply flex h-full w-full items-center justify-center;
   }
-}
 
-[data-sonner-toast] [data-content] {
-  transform: translateZ(0);
-}
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+  ::-webkit-scrollbar:horizontal {
+    @apply h-1.5;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-muted;
+  }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
+  /* Vue transitions */
+  .fade-enter-active,
+  .fade-leave-active {
+    @apply transition-opacity duration-300;
+  }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
+  .fade-enter-from,
+  .fade-leave-to {
+    @apply opacity-0;
+  }
 
-::-webkit-scrollbar {
-  @apply w-1.5;
-}
-
-::-webkit-scrollbar:horizontal {
-  @apply h-1.5;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply rounded-full bg-muted;
+  /*  Vue-sonner text blurriness in chromium fix */
+  [data-sonner-toast] [data-content] {
+    @apply translate-y-0;
+  }
 }
