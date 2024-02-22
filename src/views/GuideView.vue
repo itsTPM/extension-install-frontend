@@ -57,7 +57,7 @@ onMounted(() => {
     <ExtUnavailable v-if="guideStore.isUnavailable" />
   </Transition>
   <div class="max-w-full">
-    <RouterLink to="/">
+    <RouterLink class="inline-block" to="/">
       <Button class="mb-2 flex gap-3" variant="link">
         <IconArrowLeft />
         На главную
