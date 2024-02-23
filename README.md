@@ -1,29 +1,14 @@
-# extension-install-frontend
+## Extension install — Frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+### Description
+This is a frontend side of extension installation server for Chrome browsers that allows you to install extensions **bypassing the Chrome Web Store**
 
-## Recommended IDE Setup
+You can check out [Express.js backend](https://github.com/itsTPM/extension-install-backend)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+This server is used for [Foxford Tools](https://github.com/itsTPM/foxford-tools) extension
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+### Installation steps:
+1. Clone this repository
+2. Run `npm install`
+3. Run `npm run dev` for HMR
+4. Run `npm run build` for production build
