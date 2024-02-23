@@ -73,7 +73,7 @@
     @apply border-border;
   }
   html {
-    @apply h-dvh w-dvw;
+    @apply h-full w-full;
   }
   body {
     @apply dark h-full bg-background p-5 text-foreground;
