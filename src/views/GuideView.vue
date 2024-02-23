@@ -96,7 +96,8 @@ onMounted(() => {
                   :disabled="browser.name === guideStore.browser"
                   :textValue="browser.displayName"
                   :value="browser.name"
-                  @click="changeBrowser(browser, index)">
+                  @click="changeBrowser(browser, index)"
+                  @touchend="changeBrowser(browser, index)">
                   {{ browser.displayName }}
                 </SelectItem>
               </SelectGroup>
