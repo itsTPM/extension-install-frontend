@@ -27,7 +27,7 @@ const actualPath = data?.find((item) => item.name === guideStore.browser)?.path 
       reg add {{ actualPath }}\ExtensionInstallAllowlist /v 1 /t REG_SZ /d {{ guideStore.extId }} /f
     </CodeBlock>
     <CodeBlock>
-      reg add {{ actualPath }}\ExtensionInstallSources /v 1 /t REG_SZ /d {{ guideStore.urlOrigin }}/* /f
+      reg add {{ actualPath }}\ExtensionInstallSources /v 1 /t REG_SZ /d {{ guideStore.apiUrl }}/* /f
     </CodeBlock>
   </div>
 </template>
