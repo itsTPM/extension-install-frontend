@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "browserslist": [
+    ">= 0.1% in RU",
+    "not dead"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
