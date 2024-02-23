@@ -6,7 +6,7 @@ import { Progress } from '@/components/ui/progress/index.js';
 import { browsersData } from '@/browsers.js';
 
 import { useGuideStore } from '@/stores/guide';
-import { computed, onMounted, toRefs } from 'vue';
+import { computed, onMounted, toRefs, watch } from 'vue';
 import { toast } from 'vue-sonner';
 import ExtUnavailable from '@/components/ExtUnavailable.vue';
 import { IconArrowLeft } from '@tabler/icons-vue';
@@ -48,13 +48,13 @@ function getServerStatus() {
   });
 }
 
-function changeBrowser(browser) {
-  guideStore.setStep(0);
-  guideStore.setBrowser(browser.name);
-}
-
 onMounted(() => {
   getServerStatus();
+
+  // Reset current step when browser changed because each browser has its own count of steps
+  watch(storeBrowser, () => {
+    guideStore.setStep(0);
+  });
 });
 
 const { browser: storeBrowser } = toRefs(guideStore);
