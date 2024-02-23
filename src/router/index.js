@@ -18,7 +18,7 @@ const router = createRouter({
   ],
 });
 
-router.beforeResolve((to, from, next) => {
+router.beforeEach((to, from, next) => {
   if (to.name) {
     NProgress.start();
   }
