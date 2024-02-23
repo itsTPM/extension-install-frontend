@@ -10,6 +10,7 @@ import { computed, onMounted, toRefs } from 'vue';
 import { toast } from 'vue-sonner';
 import ExtUnavailable from '@/components/ExtUnavailable.vue';
 import { IconArrowLeft } from '@tabler/icons-vue';
+import { Skeleton } from '@/components/ui/skeleton/index.js';
 
 const guideStore = useGuideStore();
 
@@ -81,7 +82,12 @@ const { browser: storeBrowser } = toRefs(guideStore);
             установка расширения {{ guideStore.extName }} версии {{ guideStore.extVersion }}
           </CardDescription>
 
-          <CardDescription v-else>установка расширения</CardDescription>
+          <CardDescription v-else class="items-center gap-1 md:flex">
+            установка расширения
+            <Skeleton class="inline-flex h-[1em] w-32 rounded-full" />
+            версии
+            <Skeleton class="inline-flex h-[1em] w-9 rounded-full" />
+          </CardDescription>
         </div>
 
         <div class="flex flex-shrink">
