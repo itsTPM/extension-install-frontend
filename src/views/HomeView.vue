@@ -6,8 +6,8 @@ import { IconBrandGithub, IconDownload } from '@tabler/icons-vue';
 
 <template>
   <Card class="flex flex-col gap-6 p-10">
-    <CardHeader class="gap-6 p-0">
-      <img alt="" class="max-w-48" src="/logo.svg" />
+    <CardHeader class="w-full gap-6 p-0">
+      <img alt="" class="h-[6.5rem] w-full" src="/logo.svg" />
       <div class="text-center">
         <CardTitle class="text-3xl font-normal">Foxford Tools</CardTitle>
         <CardDescription>кастомизация сайта Фокса</CardDescription>
