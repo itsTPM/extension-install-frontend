@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tabler/icons-vue": "^2.47.0",
+    "browserslist": "^4.23.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-vue-next": "^0.336.0",
