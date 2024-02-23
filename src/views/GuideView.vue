@@ -6,7 +6,7 @@ import { Progress } from '@/components/ui/progress/index.js';
 import { browsersData } from '@/browsers.js';
 
 import { useGuideStore } from '@/stores/guide';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, toRefs } from 'vue';
 import { toast } from 'vue-sonner';
 import ExtUnavailable from '@/components/ExtUnavailable.vue';
 import { IconArrowLeft } from '@tabler/icons-vue';
@@ -55,6 +55,8 @@ function changeBrowser(browser) {
 onMounted(() => {
   getServerStatus();
 });
+
+const { browser: storeBrowser } = toRefs(guideStore);
 </script>
 
 <template>
@@ -62,7 +64,7 @@ onMounted(() => {
     <ExtUnavailable v-if="guideStore.isUnavailable" />
   </Transition>
 
-  <div class="max-w-full">
+  <div class="w-full max-w-full md:w-fit">
     <RouterLink class="inline-block" to="/">
       <Button class="mb-2 flex gap-3" variant="link">
         <IconArrowLeft />
@@ -83,8 +85,8 @@ onMounted(() => {
         </div>
 
         <div class="flex flex-shrink">
-          <Select>
-            <SelectTrigger class="select-none focus:ring-0 focus:ring-offset-0">
+          <Select v-model="storeBrowser">
+            <SelectTrigger class="select-none focus:ring-0 focus:ring-offset-0 md:w-48">
               <SelectValue :placeholder="currentBrowser.displayName" />
             </SelectTrigger>
 
@@ -95,9 +97,7 @@ onMounted(() => {
                   :key="index"
                   :disabled="browser.name === guideStore.browser"
                   :textValue="browser.displayName"
-                  :value="browser.name"
-                  @click="changeBrowser(browser, index)"
-                  @touchend="changeBrowser(browser, index)">
+                  :value="browser.name">
                   {{ browser.displayName }}
                 </SelectItem>
               </SelectGroup>
