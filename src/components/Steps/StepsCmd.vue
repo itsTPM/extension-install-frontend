@@ -3,7 +3,7 @@ import { Badge } from '@/components/ui/badge/index.js';
 </script>
 
 <template>
-  <ul class="flex list-inside list-['➞'] flex-col gap-4">
+  <ul class="flex list-inside list-['>'] flex-col gap-4">
     <li>
       Одновременно нажмите
       <Badge>Win + R</Badge>
