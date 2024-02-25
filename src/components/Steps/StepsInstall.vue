@@ -24,9 +24,8 @@ const props = defineProps({
     <span>
       Правой кнопкой мыши нажмите на
       <a :href="`${guideStore.apiUrl}/extension.crx`" class="w-fit">
-        <Button class="h-fit w-fit" variant="link">вот эту ссылку</Button>
-      </a>
-      , выберите пункт "Сохранить как" и сохраните файл расширения в любую папку
+        <Button class="w-fi h-fit p-1" variant="link">вот эту ссылку</Button> </a
+      >, выберите пункт "Сохранить как" и сохраните файл расширения в любую папку
     </span>
   </div>
 </template>
