@@ -1,13 +1,8 @@
 <script setup>
-import { computed } from "vue";
-import {
-  SelectContent,
-  SelectPortal,
-  SelectViewport,
-  useForwardPropsEmits,
-} from "radix-vue";
-import { SelectScrollDownButton, SelectScrollUpButton } from ".";
-import { cn } from "@/lib/utils";
+import { computed } from 'vue';
+import { SelectContent, SelectPortal, SelectViewport, useForwardPropsEmits } from 'radix-vue';
+import { SelectScrollDownButton, SelectScrollUpButton } from '.';
+import { cn } from '@/lib/utils';
 
 defineOptions({
   inheritAttrs: false,
@@ -15,7 +10,7 @@ defineOptions({
 
 const props = defineProps({
   forceMount: { type: Boolean, required: false },
-  position: { type: String, required: false, default: "popper" },
+  position: { type: String, required: false, default: 'popper' },
   side: { type: null, required: false },
   sideOffset: { type: Number, required: false },
   align: { type: null, required: false },
@@ -32,11 +27,7 @@ const props = defineProps({
   as: { type: null, required: false },
   class: { type: null, required: false },
 });
-const emits = defineEmits([
-  "closeAutoFocus",
-  "escapeKeyDown",
-  "pointerDownOutside",
-]);
+const emits = defineEmits(['closeAutoFocus', 'escapeKeyDown', 'pointerDownOutside']);
 
 const delegatedProps = computed(() => {
   const { class: _, ...delegated } = props;
@@ -58,18 +49,15 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
             'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
           props.class
         )
-      "
-    >
+      ">
       <SelectScrollUpButton />
       <SelectViewport
         :class="
           cn(
             'p-1',
-            position === 'popper' &&
-              'h-[--radix-select-trigger-height] w-full min-w-[--radix-select-trigger-width]'
+            position === 'popper' && 'h-[--radix-select-trigger-height] w-full min-w-[--radix-select-trigger-width]'
           )
-        "
-      >
+        ">
         <slot />
       </SelectViewport>
       <SelectScrollDownButton />

@@ -1,7 +1,7 @@
 <script setup>
-import { computed } from "vue";
-import { SelectSeparator } from "radix-vue";
-import { cn } from "@/lib/utils";
+import { computed } from 'vue';
+import { SelectSeparator } from 'radix-vue';
+import { cn } from '@/lib/utils';
 
 const props = defineProps({
   asChild: { type: Boolean, required: false },
@@ -17,8 +17,5 @@ const delegatedProps = computed(() => {
 </script>
 
 <template>
-  <SelectSeparator
-    v-bind="delegatedProps"
-    :class="cn('-mx-1 my-1 h-px bg-muted', props.class)"
-  />
+  <SelectSeparator v-bind="delegatedProps" :class="cn('-mx-1 my-1 h-px bg-muted', props.class)" />
 </template>
