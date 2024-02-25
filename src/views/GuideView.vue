@@ -67,7 +67,7 @@ const { browser: storeBrowser } = toRefs(guideStore);
 
   <div class="w-full max-w-full md:w-fit">
     <RouterLink class="inline-block" to="/">
-      <Button class="mb-2 flex gap-3" variant="link">
+      <Button class="mb-2 flex gap-3 transition hover:text-rose-400" variant="link">
         <IconArrowLeft />
         На главную
       </Button>
