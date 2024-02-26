@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
+import VueMarkdown from 'vue-markdown-render';
 
 let data = ref([]);
 
@@ -16,7 +17,7 @@ onMounted(async () => {
     <ul>
       <li v-for="release in data" :key="release.id">
         <h2>{{ release.name }}</h2>
-        <p>{{ release.body }}</p>
+        <VueMarkdown :source="release.body" />
       </li>
     </ul>
   </div>
