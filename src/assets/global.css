@@ -103,9 +103,4 @@
   .fade-leave-to {
     @apply opacity-0;
   }
-
-  /*  Vue-sonner text blurriness in chromium fix */
-  [data-sonner-toast] [data-content] {
-    @apply translate-y-0;
-  }
 }
