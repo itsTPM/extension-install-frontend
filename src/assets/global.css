@@ -72,14 +72,11 @@
   * {
     @apply border-border;
   }
-  html {
-    @apply h-full w-full;
-  }
   body {
-    @apply dark h-full bg-background p-5 text-foreground;
+    @apply dark h-full min-h-screen bg-background text-foreground;
   }
   #app {
-    @apply flex h-full w-full items-center justify-center;
+    @apply flex h-full min-h-screen items-center justify-center p-5;
   }
 
   /* Scrollbar */
