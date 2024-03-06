@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { SelectIcon, SelectTrigger, useForwardProps } from 'radix-vue';
-import { ChevronDown } from 'lucide-vue-next';
+import { IconChevronDown } from '@tabler/icons-vue';
 import { cn } from '@/lib/utils';
 
 const props = defineProps({
@@ -31,7 +31,7 @@ const forwardedProps = useForwardProps(delegatedProps);
     ">
     <slot />
     <SelectIcon as-child>
-      <ChevronDown class="h-4 w-4 opacity-50" />
+      <IconChevronDown class="h-4 w-4 opacity-50" />
     </SelectIcon>
   </SelectTrigger>
 </template>

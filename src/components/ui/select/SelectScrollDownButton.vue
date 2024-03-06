@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue';
 import { SelectScrollDownButton, useForwardProps } from 'radix-vue';
-import { ChevronDown } from 'lucide-vue-next';
+import { IconChevronDown } from '@tabler/icons-vue';
 import { cn } from '@/lib/utils';
 
 const props = defineProps({
@@ -24,7 +24,7 @@ const forwardedProps = useForwardProps(delegatedProps);
     v-bind="forwardedProps"
     :class="cn('flex cursor-default items-center justify-center py-1', props.class)">
     <slot>
-      <ChevronDown class="h-4 w-4" />
+      <IconChevronDown class="h-4 w-4" />
     </slot>
   </SelectScrollDownButton>
 </template>
