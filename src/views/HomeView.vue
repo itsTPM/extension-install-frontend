@@ -18,14 +18,14 @@ import { IconBrandGithub, IconDownload } from '@tabler/icons-vue';
       <RouterLink to="/install">
         <Button class="h-fit w-full justify-between py-[0.825rem]">
           <span class="text-xl font-normal">установить</span>
-          <IconDownload size="32" strokeWidth="1.5" />
+          <IconDownload size="2rem" strokeWidth="1.5" />
         </Button>
       </RouterLink>
 
       <a href="https://github.com/itsTPM/foxford-tools" target="_blank">
         <Button class="h-fit w-full justify-between py-[0.825rem]">
           <span class="text-xl font-normal">GitHub</span>
-          <IconBrandGithub size="32" strokeWidth="1.5" />
+          <IconBrandGithub size="2rem" strokeWidth="1.5" />
         </Button>
       </a>
     </CardContent>
