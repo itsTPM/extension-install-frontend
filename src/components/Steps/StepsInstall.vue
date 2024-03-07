@@ -1,6 +1,7 @@
 <script setup>
 import { Button } from '@/components/ui/button/index.js';
 import { useGuideStore } from '@/stores/guide';
+import { onMounted } from 'vue';
 
 const guideStore = useGuideStore();
 
@@ -16,6 +17,13 @@ const props = defineProps({
   <div v-if="installMethod === 'oneClick'" class="flex flex-col gap-3">
     <span>Нажмите на кнопку и подтвердите установку во всплывающем окне</span>
     <a :href="`${guideStore.apiUrl}/extension.crx?guide=true`" class="w-fit">
+      <Button class="w-fit">Установить расширение</Button>
+    </a>
+  </div>
+
+  <div v-else-if="installMethod === 'firefox'" class="flex flex-col gap-3">
+    <span>Нажмите на кнопку и подтвердите установку во всплывающем окне</span>
+    <a :href="`${guideStore.apiUrl}/firefox/latest`" class="w-fit">
       <Button class="w-fit">Установить расширение</Button>
     </a>
   </div>
