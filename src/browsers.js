@@ -5,6 +5,7 @@ import StepsRefreshPolicy from '@/components/Steps/StepsRefreshPolicy.vue';
 import StepInstall from '@/components/Steps/StepsInstall.vue';
 import StepsEdgeDnD from '@/components/Steps/StepsEdgeDnD.vue';
 import StepsYandexDnD from '@/components/Steps/StepsYandexDnD.vue';
+import StepsFirefoxPermission from './components/Steps/StepsFirefoxPermission.vue';
 
 export const browsersData = [
   {
@@ -71,6 +72,21 @@ export const browsersData = [
       },
       {
         component: StepsYandexDnD,
+      },
+    ],
+  },
+  {
+    name: 'firefox',
+    displayName: 'Mozilla Firefox',
+    steps: [
+      {
+        component: StepInstall,
+        props: {
+          installMethod: 'firefox',
+        },
+      },
+      {
+        component: StepsFirefoxPermission,
       },
     ],
   },
