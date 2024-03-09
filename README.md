@@ -10,7 +10,9 @@ This server is used for [Foxford Tools](https://github.com/itsTPM/foxford-tools)
 
 ### Installation steps:
 
+> Make sure you have [Node.js](https://nodejs.org/en/) and [pnpm](https://pnpm.io/) installed
+
 1. Clone this repository
-2. Run `npm install`
-3. Run `npm run dev` for HMR
-4. Run `npm run build` for production build
+2. Run `pnpm install`
+3. Run `pnpm run dev` for HMR
+4. Run `pnpm run build` for production build
