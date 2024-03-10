@@ -19,4 +19,7 @@ export default defineConfig({
       plugins: [tailwind(), autoprefixer()],
     },
   },
+  test: {
+    environment: 'jsdom',
+  },
 });
