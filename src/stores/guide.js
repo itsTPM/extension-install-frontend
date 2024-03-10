@@ -8,9 +8,8 @@ export const useGuideStore = defineStore('guide', {
       extId: '',
       extName: '',
       extVersion: '',
-      urlOrigin: '',
       isUnavailable: false,
-      apiUrl: import.meta.env.VITE_APP_API_URL,
+      apiUrl: import.meta.env.VITE_APP_API_URL || '',
     };
   },
   actions: {
@@ -28,9 +27,6 @@ export const useGuideStore = defineStore('guide', {
     },
     setBrowser(browser) {
       this.browser = browser;
-    },
-    setUrlOrigin(url) {
-      this.urlOrigin = url;
     },
     setUnavailable() {
       this.isUnavailable = true;

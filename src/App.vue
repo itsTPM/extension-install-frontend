@@ -26,7 +26,6 @@ onMounted(() => {
     }
   }
 
-  guideStore.setUrlOrigin(window.location.origin);
 });
 </script>
 
