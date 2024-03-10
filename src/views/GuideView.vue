@@ -32,10 +32,9 @@ function getServerStatus() {
             guideStore.setUnavailable();
           }
         })
-        .catch((error) => {
-          console.error('Error:', error);
-          reject(error);
+        .catch(() => {
           guideStore.setUnavailable();
+          reject('Ошибка при загрузке данных!');
         });
     });
   };
