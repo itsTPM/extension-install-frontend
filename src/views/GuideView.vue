@@ -1,16 +1,15 @@
 <script setup>
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Button } from '@/components/ui/button/index.js';
-import { Progress } from '@/components/ui/progress/index.js';
 import { browsersData } from '@/browsers.js';
-
+import ExtUnavailable from '@/components/ExtUnavailable.vue';
+import { Button } from '@/components/ui/button/index.js';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress/index.js';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Skeleton } from '@/components/ui/skeleton/index.js';
 import { useGuideStore } from '@/stores/guide';
+import { IconArrowLeft } from '@tabler/icons-vue';
 import { computed, onMounted, toRefs, watch } from 'vue';
 import { toast } from 'vue-sonner';
-import ExtUnavailable from '@/components/ExtUnavailable.vue';
-import { IconArrowLeft } from '@tabler/icons-vue';
-import { Skeleton } from '@/components/ui/skeleton/index.js';
 
 const guideStore = useGuideStore();
 
