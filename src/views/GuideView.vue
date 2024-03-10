@@ -44,6 +44,8 @@ function getServerStatus() {
     success: 'Расширение готово к установке!',
     error: 'Ошибка при загрузке данных!',
   });
+
+  return apiData();
 }
 
 onMounted(() => {
