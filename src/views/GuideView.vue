@@ -16,36 +16,34 @@ const guideStore = useGuideStore();
 let currentBrowser = computed(() => browsersData.find((browser) => browser.name === guideStore.browser));
 
 function getServerStatus() {
-  const apiData = () => {
-    return new Promise((resolve, reject) => {
-      fetch(`${guideStore.apiUrl}/status`)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.id && data.name && data.version) {
-            guideStore.setExtId(data.id);
-            guideStore.setExtName(data.name);
-            guideStore.setExtVersion(data.version);
-            resolve(data);
-            guideStore.setAvailable();
-          } else {
-            reject('Ошибка при загрузке данных!');
-            guideStore.setUnavailable();
-          }
-        })
-        .catch(() => {
-          guideStore.setUnavailable();
+  const apiData = new Promise((resolve, reject) => {
+    fetch(`${guideStore.apiUrl}/status`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.id && data.name && data.version) {
+          guideStore.setExtId(data.id);
+          guideStore.setExtName(data.name);
+          guideStore.setExtVersion(data.version);
+          resolve(data);
+          guideStore.setAvailable();
+        } else {
           reject('Ошибка при загрузке данных!');
-        });
-    });
-  };
+          guideStore.setUnavailable();
+        }
+      })
+      .catch(() => {
+        guideStore.setUnavailable();
+        reject('Ошибка при загрузке данных!');
+      });
+  });
 
-  toast.promise(apiData(), {
+  toast.promise(apiData, {
     loading: 'Загрузка данных с сервера...',
     success: 'Расширение готово к установке!',
     error: 'Ошибка при загрузке данных!',
   });
 
-  return apiData();
+  return apiData;
 }
 
 onMounted(() => {
