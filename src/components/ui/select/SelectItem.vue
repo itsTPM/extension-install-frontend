@@ -33,7 +33,7 @@ const forwardedProps = useForwardProps(delegatedProps);
     v-bind="forwardedProps">
     <span class="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <SelectItemIndicator>
-        <IconCheck class="h-4 w-4" />
+        <IconCheck class="h-4 w-4" stroke-width="1.5" />
       </SelectItemIndicator>
     </span>
 
