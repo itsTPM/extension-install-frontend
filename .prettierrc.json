@@ -3,11 +3,15 @@
   "tabWidth": 2,
   "useTabs": false,
   "semi": true,
+  "endOfLine": "lf",
   "singleQuote": true,
-  "trailingComma": "es5",
+  "bracketSameLine": true,
   "bracketSpacing": true,
   "arrowParens": "always",
+  "trailingComma": "all",
   "htmlWhitespaceSensitivity": "css",
-  "bracketSameLine": true,
+  "vueIndentScriptAndStyle": false,
+  "insertPragma": false,
+  "requirePragma": false,
   "plugins": ["prettier-plugin-tailwindcss"]
 }
