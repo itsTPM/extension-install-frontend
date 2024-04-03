@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@tabler/icons-vue": "^3.1.0",
+    "@vercel/analytics": "^1.2.2",
     "browserslist": "^4.23.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
