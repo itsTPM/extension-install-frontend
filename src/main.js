@@ -2,6 +2,7 @@ import './assets/global.css';
 import 'nprogress/nprogress.css';
 
 import { inject } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
@@ -17,3 +18,4 @@ app.use(router);
 app.mount('#app');
 
 inject('');
+injectSpeedInsights();
