@@ -24,7 +24,7 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
     "prettier-plugin-tailwindcss": "^0.5.13",
-    "radix-vue": "^1.6.2",
+    "radix-vue": "^1.7.1",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "vue": "^3.4.21",
