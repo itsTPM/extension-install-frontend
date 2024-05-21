@@ -89,7 +89,7 @@ const { browser: storeBrowser } = toRefs(guideStore);
 
         <div class="flex flex-shrink">
           <Select v-model="storeBrowser">
-            <SelectTrigger class="select-none focus:ring-0 focus:ring-offset-0 md:w-48">
+            <SelectTrigger class="select-none md:w-48">
               <SelectValue :placeholder="currentBrowser.displayName" />
             </SelectTrigger>
 
