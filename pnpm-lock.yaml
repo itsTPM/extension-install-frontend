@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@tabler/icons-vue':
     specifier: ^3.1.0
-    version: 3.1.0(vue@3.4.27)
+    version: 3.5.0(vue@3.4.27)
   '@vercel/analytics':
     specifier: ^1.2.2
     version: 1.2.2
@@ -668,17 +668,17 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@tabler/icons-vue@3.1.0(vue@3.4.27):
-    resolution: {integrity: sha512-o4+uKniOgF52v5+BSdcmSmHMMFQ9KGqrv4/sihBBcrUoZHXqjLq9fPTp4ThnJOQchrI5jUIu2ht0BMZZd4Wbog==}
+  /@tabler/icons-vue@3.5.0(vue@3.4.27):
+    resolution: {integrity: sha512-55gxPKpT8rk2SoYh82tHfTAuMah4W2cseMabKY1WchRHe4Hqd2JgKFxlvI4na2YVeByaG1KgMiIrmkDz5NRyqQ==}
     peerDependencies:
       vue: '>=3.0.1'
     dependencies:
-      '@tabler/icons': 3.1.0
+      '@tabler/icons': 3.5.0
       vue: 3.4.27
     dev: false
 
-  /@tabler/icons@3.1.0:
-    resolution: {integrity: sha512-CpZGyS1IVJKFcv88yZ2sYZIpWWhQ6oy76BQKQ5SF0fGgOqgyqKdBGG/YGyyMW632on37MX7VqQIMTzN/uQqmFg==}
+  /@tabler/icons@3.5.0:
+    resolution: {integrity: sha512-I53dC3ZSHQ2MZFGvDYJelfXm91L2bTTixS4w5jTAulLhHbCZso5Bih4Rk/NYZxlngLQMKHvEYwZQ+6w/WluKiA==}
     dev: false
 
   /@types/cookie@0.6.0:
