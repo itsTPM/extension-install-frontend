@@ -20,9 +20,9 @@ const actualPath = data?.find((item) => item.name === guideStore.browser)?.path 
 
 <template>
   <div class="flex flex-col gap-3">
-    <span>
+    <p>
       Выполните следующие команды в командной строке. Они добавят настройку в Chrome, разрешающую установку расширения:
-    </span>
+    </p>
     <CodeBlock>
       reg add {{ actualPath }}\ExtensionInstallAllowlist /v 1 /t REG_SZ /d {{ guideStore.extId }} /f
     </CodeBlock>

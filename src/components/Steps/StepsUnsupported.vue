@@ -1,5 +1,5 @@
 <script setup></script>
 
 <template>
-  <span>Браузер не поддерживается :(</span>
+  <p>Браузер не поддерживается :(</p>
 </template>

@@ -10,6 +10,7 @@ import { useGuideStore } from '@/stores/guide';
 import { IconArrowLeft } from '@tabler/icons-vue';
 import { computed, onMounted, toRefs, watch } from 'vue';
 import { toast } from 'vue-sonner';
+import { RouterLink } from 'vue-router';
 
 const guideStore = useGuideStore();
 
@@ -64,12 +65,10 @@ const { browser: storeBrowser } = toRefs(guideStore);
   </Transition>
 
   <div class="w-full max-w-full md:w-fit">
-    <RouterLink class="inline-block" to="/">
-      <Button class="mb-2 flex gap-3 transition hover:text-rose-400" variant="link">
-        <IconArrowLeft size="1.5rem" stroke-width="1.5" />
-        На главную
-      </Button>
-    </RouterLink>
+    <Button class="mb-2 inline-flex gap-3 transition hover:text-rose-400" variant="link" :as="RouterLink" to="/">
+      <IconArrowLeft size="1.5rem" stroke-width="1.5" />
+      На главную
+    </Button>
 
     <Card class="relative flex h-[26rem] w-full flex-col md:w-[40rem]">
       <CardHeader class="flex flex-shrink flex-col gap-3 md:flex-row">
