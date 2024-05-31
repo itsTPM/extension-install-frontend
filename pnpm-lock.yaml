@@ -13,10 +13,10 @@ importers:
         version: 3.5.0(vue@3.4.27)
       '@vercel/analytics':
         specifier: ^1.2.2
-        version: 1.2.2
+        version: 1.3.0
       '@vercel/speed-insights':
         specifier: ^1.0.10
-        version: 1.0.10(vue-router@4.3.2)(vue@3.4.27)
+        version: 1.0.10(vue-router@4.3.2(vue@3.4.27))(vue@3.4.27)
       browserslist:
         specifier: ^4.23.0
         version: 4.23.0
@@ -56,13 +56,13 @@ importers:
     devDependencies:
       '@pinia/testing':
         specifier: ^0.1.3
-        version: 0.1.3(pinia@2.1.7)(vue@3.4.27)
+        version: 0.1.3(pinia@2.1.7(vue@3.4.27))(vue@3.4.27)
       '@types/node':
         specifier: ^20.12.3
         version: 20.12.12
       '@vitejs/plugin-vue':
         specifier: ^5.0.3
-        version: 5.0.4(vite@5.2.11)(vue@3.4.27)
+        version: 5.0.4(vite@5.2.11(@types/node@20.12.12))(vue@3.4.27)
       '@vitest/ui':
         specifier: ^1.3.1
         version: 1.6.0(vitest@1.6.0)
@@ -489,8 +489,8 @@ packages:
   '@types/wrap-ansi@3.0.0':
     resolution: {integrity: sha512-ltIpx+kM7g/MLRZfkbL7EsCEjfzCcScLpkg37eXEtx5kmrAKBkTJwd1GIAjDSL8wTpM6Hzn5YO4pSb91BEwu1g==}
 
-  '@vercel/analytics@1.2.2':
-    resolution: {integrity: sha512-X0rctVWkQV1e5Y300ehVNqpOfSOufo7ieA5PIdna8yX/U7Vjz0GFsGf4qvAhxV02uQ2CVt7GYcrFfddXXK2Y4A==}
+  '@vercel/analytics@1.3.0':
+    resolution: {integrity: sha512-iAeQhNwL2kGUVbx6Z43uT+PG19Bn7IUOGWB9Z4jmWAyL/Jn6v+KHmZj0fSFCcxN1YXU9xkjKpuD/6YlJmzN06A==}
     peerDependencies:
       next: '>= 13'
       react: ^18 || ^19
@@ -1960,7 +1960,7 @@ snapshots:
 
   '@open-draft/until@2.1.0': {}
 
-  '@pinia/testing@0.1.3(pinia@2.1.7)(vue@3.4.27)':
+  '@pinia/testing@0.1.3(pinia@2.1.7(vue@3.4.27))(vue@3.4.27)':
     dependencies:
       pinia: 2.1.7(vue@3.4.27)
       vue-demi: 0.14.7(vue@3.4.27)
@@ -2059,16 +2059,16 @@ snapshots:
 
   '@types/wrap-ansi@3.0.0': {}
 
-  '@vercel/analytics@1.2.2':
+  '@vercel/analytics@1.3.0':
     dependencies:
       server-only: 0.0.1
 
-  '@vercel/speed-insights@1.0.10(vue-router@4.3.2)(vue@3.4.27)':
-    dependencies:
+  '@vercel/speed-insights@1.0.10(vue-router@4.3.2(vue@3.4.27))(vue@3.4.27)':
+    optionalDependencies:
       vue: 3.4.27
       vue-router: 4.3.2(vue@3.4.27)
 
-  '@vitejs/plugin-vue@5.0.4(vite@5.2.11)(vue@3.4.27)':
+  '@vitejs/plugin-vue@5.0.4(vite@5.2.11(@types/node@20.12.12))(vue@3.4.27)':
     dependencies:
       vite: 5.2.11(@types/node@20.12.12)
       vue: 3.4.27
@@ -2808,8 +2808,9 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.38):
     dependencies:
       lilconfig: 3.1.1
-      postcss: 8.4.38
       yaml: 2.4.1
+    optionalDependencies:
+      postcss: 8.4.38
 
   postcss-nested@6.0.1(postcss@8.4.38):
     dependencies:
@@ -3116,27 +3117,24 @@ snapshots:
 
   vite@5.2.11(@types/node@20.12.12):
     dependencies:
-      '@types/node': 20.12.12
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.17.2
     optionalDependencies:
+      '@types/node': 20.12.12
       fsevents: 2.3.3
 
   vitest@1.6.0(@types/node@20.12.12)(@vitest/ui@1.6.0)(jsdom@24.0.0):
     dependencies:
-      '@types/node': 20.12.12
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0
       '@vitest/snapshot': 1.6.0
       '@vitest/spy': 1.6.0
-      '@vitest/ui': 1.6.0(vitest@1.6.0)
       '@vitest/utils': 1.6.0
       acorn-walk: 8.3.2
       chai: 4.4.1
       debug: 4.3.4
       execa: 8.0.1
-      jsdom: 24.0.0
       local-pkg: 0.5.0
       magic-string: 0.30.10
       pathe: 1.1.2
@@ -3148,6 +3146,10 @@ snapshots:
       vite: 5.2.11(@types/node@20.12.12)
       vite-node: 1.6.0(@types/node@20.12.12)
       why-is-node-running: 2.2.2
+    optionalDependencies:
+      '@types/node': 20.12.12
+      '@vitest/ui': 1.6.0(vitest@1.6.0)
+      jsdom: 24.0.0
     transitivePeerDependencies:
       - less
       - lightningcss
