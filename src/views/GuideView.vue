@@ -101,7 +101,6 @@ const { browser: storeBrowser } = toRefs(guideStore);
                   v-for="(browser, index) in browsersData"
                   :key="index"
                   :class="{ hidden: browser.name === 'Неподдерживаемый' }"
-                  :disabled="browser.name === guideStore.browser"
                   :textValue="browser.displayName"
                   :value="browser.name">
                   {{ browser.displayName }}
