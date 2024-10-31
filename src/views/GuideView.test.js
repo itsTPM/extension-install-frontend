@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import { HttpResponse, http } from 'msw';
 import { setupServer } from 'msw/node';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
@@ -42,7 +42,7 @@ const mockJson = {
 let wrapper;
 
 beforeEach(() => {
-  wrapper = mount(GuideView);
+  wrapper = shallowMount(GuideView);
 });
 
 afterEach(() => {
@@ -57,7 +57,7 @@ describe(`Fetch API '/status'`, () => {
     const server = setupServer(
       http.get('https://vitest.local/status', () => {
         return HttpResponse.json(mockJson);
-      })
+      }),
     );
     server.listen();
 
@@ -79,7 +79,7 @@ describe(`Fetch API '/status'`, () => {
     const server = setupServer(
       http.get('https://vitest.local/status', () => {
         return HttpResponse.networkError();
-      })
+      }),
     );
 
     server.listen();
