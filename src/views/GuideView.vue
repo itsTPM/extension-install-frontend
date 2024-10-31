@@ -118,17 +118,24 @@ const { browser: storeBrowser } = toRefs(guideStore);
           v-bind="currentBrowser.steps[guideStore.currentStep].props" />
       </CardContent>
 
-      <CardFooter class="flex flex-shrink gap-3">
+      <CardFooter class="grid w-full gap-3 sm:grid-cols-6">
         <Button
           :disabled="guideStore.currentStep === currentBrowser.steps.length - 1"
-          class="flex-grow"
-          @click="guideStore.setStep((guideStore.currentStep += 1))">
+          @click="guideStore.setStep((guideStore.currentStep += 1))"
+          class="col-span-3 md:col-span-3">
           Далее
         </Button>
 
-        <Button :disabled="guideStore.currentStep === 0" @click="guideStore.setStep((guideStore.currentStep -= 1))">
+        <Button
+          :disabled="guideStore.currentStep === 0"
+          @click="guideStore.setStep((guideStore.currentStep -= 1))"
+          class="col-span-3 md:col-span-2">
           Назад
         </Button>
+
+        <p class="hidden w-full select-none text-center text-xs text-muted-foreground md:inline">
+          Шаг {{ guideStore.currentStep + 1 }} из {{ currentBrowser.steps.length }}
+        </p>
 
         <Progress
           v-if="currentBrowser.steps.length > 1"
